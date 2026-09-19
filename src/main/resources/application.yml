@@ -1,3 +1,8 @@
+#spring.application.name=ecom-application
+#spring.h2.console.enabled=true
+# spring.jpa.show-sql=true
+# spring.jpa.hibernate.ddl-auto=create
+# management.endpoints.web.exposure.include =*
 spring:
   config:
     import: optional:file:./.env[.properties]
@@ -24,4 +29,20 @@ management:
   endpoints:
     web:
       exposure:
-        include: "*"
+        include: beans,health,info
+
+  endpoint:
+    health:
+      show-details: always
+    shutdown:
+      enabled: true
+
+  info:
+    env:
+      enabled: true
+
+info:
+  app:
+    name: E-commerce Application
+    description: A sample e-commerce application built with Spring Boot
+    version: 1.0.0
